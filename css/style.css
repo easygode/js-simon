@@ -5,3 +5,18 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body{
+    width: 100vh;
+    background-color: rgb(246, 195, 176);
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    position: absolute;
+    left: 50vh;
+    top: 10vh;
+    display: flex;
+    flex-direction:row;
+}
+
+ul{
+    list-style: none;
+}
