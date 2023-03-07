@@ -1,5 +1,45 @@
 'use strict';
 
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
+
+function game(){
+
+    const htmlNumbers = document.getElementById('simon-numbers');
+    console.log(htmlNumbers);
+    const simonNumber = [];
+    const timer = 3;
+
+    for(let i = 0; i < 5; i++){
+        const randomNumbers = getRndInteger(1,100);
+        simonNumber.push(randomNumbers);
+    }
+
+    htmlNumbers.innerHTML = simonNumber;
+
+    setTimeout (function(){
+        htmlNumbers.innerHTML = '';
+    }, timer * 1000)
+
+    setTimeout(function(){
+        const userNumber = [];
+        for(let i = 0; i <= 5; i++){
+            const userNumber = Number(prompt(`Inserisci un numero ${i}`));
+            if(simonNumber.includes(userNumber) && !userNumber.includes(userNumber)){
+                userNumber.push(userNumber);
+            }
+            if(userNumber.lenght > 0){
+                document.getElementById('result').innerHTML = `Hai indovinato ${userNumber.lenght} numeri. I numeri sono ${userNumber}`;
+            } else {
+                document.getElementById('result').innerHTML = 'Sei una schiappa';
+            }
+        }
+    }, (timer + 1) * 2000);
+}
+
+game();
+
 //1. Creo una funzione che genera x numeri casuali da 1 a max e li inserisce in un array
 
 setTimeout (createNumbers, 30000);
@@ -13,6 +53,8 @@ function createNumbers (times, max){
         console.log(randomNumbers[i]);
     } 
 }   
+
+//invoco la funzione per l'esercizio, 5 numeri e numeri da 1 a 100
 createNumbers (5, 100);
 
 //2. Mostro i 5 numeri generati nella pagina, usando innerHTML
